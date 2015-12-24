@@ -1,3 +1,5 @@
+#define _CPPUNWIND
+
 #include "ICPOdometry.h"
 #include "ICPSlowdometry.h"
 

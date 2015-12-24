@@ -2,8 +2,11 @@ cmake_minimum_required(VERSION 2.6.0)
 
 project(ICP)
 
+set(EIGEN_INCLUDE_DIRS "D:/PCL 1.7.2/3rdParty/Eigen/eigen3")
+set(Boost_USE_STATIC_LIBS ON)
+
 find_package(OpenCV REQUIRED)
-find_package(Boost COMPONENTS thread filesystem system date_time REQUIRED)
+find_package(Boost COMPONENTS thread filesystem system date_time chrono REQUIRED)
 find_package(CUDA REQUIRED)
 
 #remove this as soon as eigen is shipped with FindEigen.cmake
@@ -26,6 +29,7 @@ include_directories(${Boost_INCLUDE_DIR})
 include_directories(${CUDA_INCLUDE_DIRS})
 include_directories(${EIGEN_INCLUDE_DIRS})
 
+file(GLOB hdrs *.h)
 file(GLOB srcs *.cpp)
 file(GLOB cuda Cuda/*.cu)
 file(GLOB containers Cuda/containers/*.cpp)
@@ -45,6 +49,7 @@ CUDA_COMPILE(cuda_objs ${cuda})
 set(CMAKE_CXX_FLAGS "-O3 -msse2 -msse3 -Wall")
 
 add_executable(ICP 
+			   ${hdrs}
                ${srcs}
                ${cuda} 
                ${cuda_objs} 
