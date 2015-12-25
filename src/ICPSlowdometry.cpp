@@ -113,9 +113,9 @@ void ICPSlowdometry::initICPModel(unsigned short * depth,
 
 void ICPSlowdometry::getIncrementalTransformation(Eigen::Vector3f & trans, Eigen::Matrix<float, 3, 3, Eigen::RowMajor> & rot)
 {
-    iterations[0] = 10;
-    iterations[1] = 5;
-    iterations[2] = 4;
+    iterations.push_back(10);
+    iterations.push_back(5);
+    iterations.push_back(4);
 
     Eigen::Matrix<float, 3, 3, Eigen::RowMajor> Rprev = rot;
     Eigen::Vector3f tprev = trans;

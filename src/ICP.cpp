@@ -132,8 +132,8 @@ int main(int argc, char * argv[])
     float meanSlow = 0.0f;
     int count = 0;
 
-    int threads = 128;
-    int blocks = 96;
+    int threads = 96;
+    int blocks = 80;
 
     int bestThreads = threads;
     int bestBlocks = blocks;
